@@ -73,8 +73,8 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// توجيه آمن وبسيط جداً يحل مشكلة الـ PathError تماماً
-app.use((req, res) => {
+// التوجيه الصحيح المتوافق 100% مع Express 5 و Render
+app.get('/{*path}', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
