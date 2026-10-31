@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API المنتجات
 app.get('/api/products', (req, res) => {
     db.all("SELECT * FROM products", [], (err, rows) => {
         if (err) {
@@ -47,7 +46,6 @@ app.delete('/api/products/:id', (req, res) => {
     });
 });
 
-// API الطلبات
 app.get('/api/orders', (req, res) => {
     db.all("SELECT * FROM orders", [], (err, rows) => {
         if (err) {
@@ -73,8 +71,7 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// توجيه باقي الصفحات لـ index.html
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
