@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// API المنتجات
 app.get('/api/products', (req, res) => {
     db.all("SELECT * FROM products", [], (err, rows) => {
         if (err) {
@@ -46,6 +47,7 @@ app.delete('/api/products/:id', (req, res) => {
     });
 });
 
+// API الطلبات
 app.get('/api/orders', (req, res) => {
     db.all("SELECT * FROM orders", [], (err, rows) => {
         if (err) {
@@ -71,7 +73,8 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-app.get('/*', (req, res) => {
+// توجيه آمن وبسيط جداً يحل مشكلة الـ PathError تماماً
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
