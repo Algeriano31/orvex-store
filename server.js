@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// منع المتصفح من حفظ أي نسخة قديمة (No-Cache Policy)
+// منع التخزين المؤقت
 app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     res.setHeader('Pragma', 'no-cache');
@@ -17,15 +17,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// تقديم الملفات الستاتيكية
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API المنتجات
 app.get('/api/products', (req, res) => {
     db.all("SELECT * FROM products", [], (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
+        if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
 });
@@ -36,10 +34,7 @@ app.post('/api/products', (req, res) => {
         "INSERT INTO products (name, price, category, image, description, supplierPhone) VALUES (?, ?, ?, ?, ?, ?)",
         [name, price, category || 'عام', image, description, supplierPhone || '213777083158'],
         function (err) {
-            if (err) {
-                res.status(500).json({ error: err.message });
-                return;
-            }
+            if (err) return res.status(500).json({ error: err.message });
             res.json({ id: this.lastID, message: "تم إضافة المنتج بنجاح!" });
         }
     );
@@ -48,10 +43,7 @@ app.post('/api/products', (req, res) => {
 app.delete('/api/products/:id', (req, res) => {
     const { id } = req.params;
     db.run("DELETE FROM products WHERE id = ?", [id], function (err) {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
+        if (err) return res.status(500).json({ error: err.message });
         res.json({ message: "تم حذف المنتج بنجاح!" });
     });
 });
@@ -59,10 +51,7 @@ app.delete('/api/products/:id', (req, res) => {
 // API الطلبات
 app.get('/api/orders', (req, res) => {
     db.all("SELECT * FROM orders", [], (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
+        if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
 });
@@ -73,18 +62,15 @@ app.post('/api/orders', (req, res) => {
         "INSERT INTO orders (productId, quantity, totalPrice) VALUES (?, ?, ?)",
         [productId, quantity, totalPrice],
         function (err) {
-            if (err) {
-                res.status(500).json({ error: err.message });
-                return;
-            }
+            if (err) return res.status(500).json({ error: err.message });
             res.json({ id: this.lastID, message: "تم تسجيل الطلب!" });
         }
     );
 });
 
-// التوجيه للواجهة الرئيسية
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// التوجيه الصحيح بدون أخطاء
+app.use((req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
