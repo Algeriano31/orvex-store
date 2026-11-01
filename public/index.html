@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>VOLT 2.0 | المتجر الذكي المتكامل</title>
+    <title>VOLT 2.0 | سوق الإلكترونيات والتقنية المتكامل</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,16 +32,18 @@
     <!-- الهيدر الرئيسي الاحترافي -->
     <header class="glass-header border-b border-slate-800/80 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <!-- الشعار -->
             <a href="/" class="flex items-center gap-3 group">
                 <div class="bg-gradient-to-tr from-blue-600 to-indigo-500 text-white font-black text-2xl px-3.5 py-1 rounded-xl shadow-lg shadow-blue-500/30 group-hover:scale-105 transition">
                     VOLT <span class="text-amber-400">2.0</span>
                 </div>
                 <div class="hidden md:flex flex-col">
                     <span class="font-extrabold text-sm text-slate-200 tracking-wide">سوق الموردين الذكي</span>
-                    <span class="text-[10px] text-blue-400 font-semibold">Direct Supplier Hub</span>
+                    <span class="text-[10px] text-blue-400 font-semibold">Direct Tech Supplier Hub</span>
                 </div>
             </a>
 
+            <!-- أدوات البحث والتصفح -->
             <div class="flex items-center gap-3">
                 <a href="/admin.html" class="bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-2">
                     <i class="fa-solid fa-sliders text-blue-400"></i>
@@ -61,26 +63,28 @@
     <section class="relative bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 pt-10 pb-8 px-4 overflow-hidden border-b border-slate-800/50">
         <div class="max-w-5xl mx-auto text-center relative z-10 space-y-4">
             <span class="inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400 font-semibold text-xs px-4 py-1.5 rounded-full">
-                ⚡ اطلب مباشرة من المورد بدون عملاء وسطاء
+                ⚡ اطلب الأجهزة الإلكترونية مباشرة من المورد بدون وسطاء
             </span>
             <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
-                تسوق أحدث المنتجات <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">بأفضل الأسعار</span>
+                أحدث المنتجات التقنية <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">بأفضل الأسعار</span>
             </h1>
             <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto font-medium">
-                تصفح المنتجات المتوفرة حالياً، أضف السلع لسلتك، وتأكد من طلبك مباشرة عبر الواتساب بنقرة واحدة.
+                تصفح الساعات الذكية، الهواتف، الحواسيب والشواحن، أضف السلع لسلتك، واطلب مباشرة عبر الواتساب بنقرة واحدة.
             </p>
 
+            <!-- حقل البحث والتصنيفات التكنولوجية الدقيقة -->
             <div class="pt-4 max-w-xl mx-auto space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="search-input" oninput="filterProducts()" placeholder="ابحث عن منتج..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl pr-11 pl-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition shadow-inner">
+                    <input type="text" id="search-input" oninput="filterProducts()" placeholder="ابحث عن منتج تقني..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl pr-11 pl-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition shadow-inner">
                 </div>
 
                 <div id="categories-tabs" class="flex flex-wrap justify-center gap-2 pt-2">
                     <button onclick="filterCategory('all')" class="cat-btn active bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition">الكل</button>
-                    <button onclick="filterCategory('إلكترونيات')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">إلكترونيات</button>
+                    <button onclick="filterCategory('إلكترونيات')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">إلكترونيات وساعات</button>
                     <button onclick="filterCategory('هواتف')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">هواتف</button>
-                    <button onclick="filterCategory('ملابس')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">ملابس</button>
+                    <button onclick="filterCategory('حواسيب وطابعات')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">حواسيب وطابعات</button>
+                    <button onclick="filterCategory('شواحن وملحقات')" class="cat-btn bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition">شواحن وملحقات</button>
                 </div>
             </div>
         </div>
@@ -91,7 +95,7 @@
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div class="col-span-full text-center py-20 text-slate-500 space-y-3">
                 <i class="fa-solid fa-circle-notch fa-spin text-3xl text-blue-500"></i>
-                <p class="text-sm font-semibold">جاري تحميل كتالوج المنتجات...</p>
+                <p class="text-sm font-semibold">جاري تحميل كتالوج المنتجات التقنية...</p>
             </div>
         </div>
     </main>
@@ -127,9 +131,9 @@
     <!-- الفوتر -->
     <footer class="bg-slate-950 border-t border-slate-900 text-slate-500 text-center py-6 text-xs sm:text-sm">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <p>جميع الحقوق محفوظة © 2026 - منصة <strong>VOLT 2.0</strong></p>
+            <p>جميع الحقوق محفوظة © 2026 - منصة <strong>VOLT 2.0 Tech Hub</strong></p>
             <div class="flex items-center gap-4 text-slate-400 text-xs">
-                <span>⚡ ربط مباشر مع الموردين</span>
+                <span>⚡ ربط مباشر مع موردين الإلكترونيات</span>
                 <span>🔒 نظام آمن 100%</span>
             </div>
         </div>
@@ -156,7 +160,7 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-16 space-y-2">
                         <i class="fa-solid fa-box-open text-4xl text-slate-600"></i>
-                        <p class="text-slate-400 font-semibold">لا توجد منتجات مطابقة لجميع الفلاتر.</p>
+                        <p class="text-slate-400 font-semibold">لا توجد منتجات تقنية مطابقة للفلاتر.</p>
                     </div>`;
                 return;
             }
@@ -168,10 +172,9 @@
                             <img src="${p.image}" alt="${p.name}" class="w-full h-52 object-cover bg-slate-950 group-hover:scale-105 transition duration-500">
                             
                             <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md text-blue-400 border border-blue-500/30 text-[11px] font-bold px-3 py-1 rounded-full">
-                                ${p.category || 'عام'}
+                                ${p.category || 'إلكترونيات'}
                             </span>
 
-                            <!-- شارة مورد موثوق -->
                             <span class="absolute top-3 left-3 bg-amber-500/90 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
                                 <i class="fa-solid fa-circle-check"></i> مورد موثوق
                             </span>
@@ -184,15 +187,14 @@
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </button>
                             </div>
-                            <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${p.description || 'منتج عالي الجودة متوفر للطلب المباشر.'}</p>
+                            <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${p.description || 'جهاز ذكي عالي الجودة متوفر للطلب المباشر.'}</p>
                             
-                            <!-- مؤشر المخزون المتبقي -->
                             <div class="pt-2 flex items-center gap-1.5 text-[11px] font-bold text-amber-400">
                                 <span class="relative flex h-2 w-2">
                                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                                   <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
                                 </span>
-                                <span>متبقي 4 قطع فقط في المخزن</span>
+                                <span>متبقي قطع محددة في المخزن</span>
                             </div>
                         </div>
                     </div>
@@ -296,7 +298,7 @@
         function checkoutCart() {
             if (cart.length === 0) return alert('السلة فارغة!');
 
-            let msg = `*طلب شراء جديد - متجر VOLT 2.0*%0A%0A`;
+            let msg = `*طلب شراء منتجات تقنية - VOLT 2.0*%0A%0A`;
             let total = 0;
 
             cart.forEach((item, idx) => {
@@ -312,7 +314,7 @@
 
         function orderProductDirect(name, price, supplierPhone) {
             const phone = supplierPhone || '213777083158';
-            const msg = `*طلب شراء منتج - VOLT 2.0*%0A%0A*المنتج:* ${name}%0A*السعر:* ${price}$`;
+            const msg = `*طلب شراء جهاز - VOLT 2.0*%0A%0A*المنتج:* ${name}%0A*السعر:* ${price}$`;
             window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
 
@@ -322,11 +324,11 @@
                 navigator.share({ title: name, url: url });
             } else {
                 navigator.clipboard.writeText(url);
-                alert('تم نسخ رابط المتجر لمشاركته بنجاح!');
+                alert('تم نسخ رابط المنتج التقني بنجاح!');
             }
         }
 
         fetchProducts();
     </script>
 </body>
-</html>
+</html>   
