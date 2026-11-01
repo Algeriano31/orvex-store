@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// منع التخزين المؤقت
+// منع المتصفح من التخزين المؤقت (No-Cache Policy)
 app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     res.setHeader('Pragma', 'no-cache');
@@ -17,8 +17,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// تقديم جميع الملفات من مجلد public بشكل مباشر
+// إتاحة مجلد public بالكامل للمتصفح
 app.use(express.static(path.join(__dirname, 'public')));
+
+// توجيه صريح لصفحة لوحة التحكم
+app.get('/admin.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
 
 // API المنتجات
 app.get('/api/products', (req, res) => {
@@ -68,11 +73,7 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// التوجيه الذكي للملفات
-app.get('/admin.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
-});
-
+// الصفحة الرئيسية
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
