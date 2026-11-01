@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// إتاحة مجلد public بالكامل
+// تقديم جميع الملفات الثابتة من مجلد public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API المنتجات
@@ -68,7 +68,7 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// توجيه صريح لصفحة التحكم والصفحة الرئيسية
+// التوجيه الصريح والدقيق للصفحات
 app.get('/admin.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
@@ -77,7 +77,8 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-app.get('*', (req, res) => {
+// أي مسار آخر يتم توجيهه للرئيسية
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
