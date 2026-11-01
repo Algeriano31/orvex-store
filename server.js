@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// تقديم الملفات الستاتيكية
+// تقديم جميع الملفات من مجلد public بشكل مباشر
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API المنتجات
@@ -29,7 +29,7 @@ app.get('/api/products', (req, res) => {
 });
 
 app.post('/api/products', (req, res) => {
-    const { name, price, category, image, description, supplierPhone } = req.body;
+    const { name, price, category, image, description, supplierPhone, supplierUrl } = req.body;
     db.run(
         "INSERT INTO products (name, price, category, image, description, supplierPhone) VALUES (?, ?, ?, ?, ?, ?)",
         [name, price, category || 'عام', image, description, supplierPhone || '213777083158'],
@@ -68,9 +68,13 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// التوجيه الصحيح بدون أخطاء
-app.use((req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+// التوجيه الذكي للملفات
+app.get('/admin.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
