@@ -8,6 +8,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// منع المتصفح من حفظ أي نسخة قديمة (No-Cache Policy)
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API المنتجات
@@ -73,8 +82,8 @@ app.post('/api/orders', (req, res) => {
     );
 });
 
-// التوجيه الصحيح المتوافق 100% مع Express 5 و Render
-app.get('/{*path}', (req, res) => {
+// التوجيه للواجهة الرئيسية
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
